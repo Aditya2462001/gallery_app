@@ -1,0 +1,102 @@
+{% extends 'userpanal/userPanal.html' %}
+{% load static %}
+{% block title %}Edit Profile | Gallery App{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/edit-profile.css'%}">
+{% endblock css %}
+
+{% block body %}
+<section class="EditProfile__section">
+    <h2 class="editProfile__heading">
+        Edit Profile
+    </h2>
+    <div class="editProfile__container">
+        <div class="EditInfo__section">
+            <form class="editInfo__form" action="" method="POST">
+                {% csrf_token %}
+                <div class="register__input">
+                    <label>Fname</label>
+                    <input type="text" name="fname" placeholder="First Name" value="{{author.fname}}" required autofocus/>
+                </div>
+                <div class="register__input">
+                    <label>Lname</label>
+                    <input type="text" name="lname" placeholder="Last Name" value="{{author.lname}}" required />
+                </div>
+                <div class="register__input">
+                    <label>Email : </label>
+                    <input type="email" name="email" placeholder="Email" value="{{author.email}}" required />
+                </div>
+                <div class="register__input">
+                    <label>Number : </label>
+                    <input type="number" name="number" placeholder="Mobile Number" value="{{author.number}}" required />
+                </div>
+                <div class="register__input">
+                    <label>City: </label>
+                    <input type="text" name="city" placeholder="City" value="{{author.city}}" required />
+                </div>
+                <div class="register__input">
+                    <label>Profession: </label>
+                    <input type="text" name="profession" placeholder="profession" value="{{author.profession}}"
+                        required />
+                </div>
+                <div class="register__input">
+                    <label>Desc : </label>
+                    <textarea name="desc" id="desc" placeholder="Describe you self">{{author.desc}}</textarea>
+                </div>
+                <div class="auth__input">
+                    <div class="register__input">
+                        <label>UserName</label>
+                        <input type="text" name="username" placeholder="username" value="{{author.user.username}}"
+                            required />
+                    </div>
+                </div>
+
+                <div class="form__btn">
+                    <button type="submit">Edit Details</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="avtarEdit__section">
+            <div class="prev__section">
+                {% if author.img %}
+                <img src="{{author.img.url}}" class="prev__img" alt="">
+                {% else %}
+                <img src="" class="prev__img" alt="">
+                {% endif %}
+            </div>
+                <form action="/editProfileImg" method="POST" class="upload__section" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" accept="image/*" id="file_input" name="image" value="{{author.img.url}}" />
+                    <p class="add_file_btn">+</p>
+                    <p class="file__name">No File uploaded!!</p>
+                    <div class="form__button">
+                        <button type="submit">Edit Avtar</button>
+                    </div>
+                </form>
+        </div>
+    </div>
+</section>
+{% endblock body %}
+
+{% block js %}
+<script>
+    const add_file_btn = document.querySelector('.add_file_btn');
+    const input_file = document.getElementById('file_input');
+    const file_name = document.querySelector('.file__name');
+    const imgPrev = document.querySelector('.prev__img');
+        
+    add_file_btn.addEventListener('click',() =>
+        {
+            input_file.click();
+        })
+
+        input_file.addEventListener("change",(e) =>
+        {
+            imgPrev.src = URL.createObjectURL(e.target.files[0]);
+            file_name.textContent = e.target.files[0].name ;
+
+        });
+</script>
+{% endblock js %}

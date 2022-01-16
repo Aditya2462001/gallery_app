@@ -1,0 +1,140 @@
+.navbar
+{
+    background-color: rgba(2, 43, 11, 0.918);
+}
+.menu__item a {
+    color: #fff;
+}
+.contact__section
+{
+    min-height: 100vh;
+    padding: 1rem 5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.heading__container
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0px;
+}
+.heading__container h2
+{
+    font-size: 3rem;
+}
+.contact__container
+{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+.contact__uper__block
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact__uper__block .info__block
+{
+    flex: 1;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px rgba(118, 219, 140, 0.918);
+}
+.info__block img
+{
+    height: 40px;
+    width: 40px;
+}
+.contact__lower__block
+{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+.contact__lower__block .contact__lower__left
+{
+    flex: 0.5;
+    width: 100%;
+    height: 500px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px rgba(118, 219, 140, 0.918);
+    
+}
+.contact__lower__left iframe
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.contact__lower__right
+{
+    flex: 0.5;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+.contact__lower__right .input__block
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.input__block label
+{
+    padding:10px 25px;
+    font-size: 12px;
+}
+.input__block .input_box
+{
+    width: 100%;
+    margin-left:20px ;
+    height: 40px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 1px 1px 5px rgba(118, 219, 140, 0.918);
+    border: none;
+    outline: none;
+}
+.message__box
+{
+    height: 150px !important;
+    resize: none;
+}
+
+.send__btn
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+.send__btn button
+{
+    padding: 10px 3rem;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-weight: 600;
+    text-transform: capitalize;
+    border-radius: 10px;
+    background-color: rgba(2, 43, 11, 0.918);
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.send__btn button:hover
+{
+    transform: scale(1.1);
+}

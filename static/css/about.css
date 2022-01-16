@@ -1,0 +1,57 @@
+.navbar
+{
+    background-color: rgba(2, 43, 11, 0.918);
+}
+.menu__item a {
+    color: #fff;
+}
+.contact__section
+{
+    min-height: 80vh;
+    padding: 1rem 5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.heading__container
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0px;
+    margin-bottom: 2rem;
+}
+.heading__container h2
+{
+    font-size: 3rem;
+}
+.contact__container
+{
+    width: 80%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+.donate-btn-section
+{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem 0;
+}
+.donate-btn-section a
+{
+    padding: 20px 4rem;
+    box-shadow: 1px 1px 5px rgba(2, 43, 11, 0.918);
+    border-radius: 10px;
+    background-color: rgba(2, 43, 11, 0.918);
+    color: #fff;
+    transition: all 0.5s ease;
+}
+.donate-btn-section a:hover
+{
+    transform: scale(1.05);
+}

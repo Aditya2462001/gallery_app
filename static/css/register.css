@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,100&display=swap');
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.register__section
+{
+    width: 80%;
+    height: 700px;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+.left__container
+{
+    flex: 0.4;
+    width: 100%;
+    background-color: rgba(143, 142, 142, 0.5);
+    backdrop-filter: saturate(180%) blur(5px);
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+}
+.left__container .main__logo
+{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.left__container .main__logo h2
+{
+    align-self: flex-end;
+    padding: 10px;
+    font-size: 16px;
+}
+.left__container .main__logo h2 a
+{
+    text-decoration: none;
+    color: #000;
+}
+.left__container .main__logo h2 a:hover
+{
+    color: rgb(2, 75, 2);
+}
+.register__title_block
+{
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+.register__title_block h2
+{
+    margin-top: 5px;
+    font-size: 2rem;
+}
+.register__title_block p
+{
+    margin-left: 10px;
+    margin-bottom: 1rem;
+}
+.register__form
+{
+    width: 100%;
+    position: relative;
+    padding: 0 20px;
+}
+.register__form .register__input
+{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+.register__form .register__input input
+{
+    width:100%;
+    height: 40px;
+    padding:0 10px;
+    margin: 5px 0;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}
+.register__form .register__input input:focus
+{
+    box-shadow:0px 0px 10px rgba(143, 238, 19, 0.438);
+}
+.register__form .register__input label
+{
+    display: block;
+    padding-left: 10px;
+    font-size: 13px;
+}
+.image__files
+{
+    height: 35px;
+}
+#first_half_btn
+{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+#first_half_btn p
+{
+    width: fit-content;
+    text-align: center;
+    background-color: rgb(5, 56, 5);
+    padding: 8px 4rem;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+#first_half_btn p:hover
+{
+    padding: 10px 5rem;
+}
+.register__form .first_half
+{
+    opacity: 1;
+    visibility: visible;
+}
+.register__form .first_half.active
+{
+    opacity: 0;
+    visibility: hidden;
+}
+.register__form .second_half
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    padding: 0 20px;
+    transition: all 0.5s ease;
+}
+.second_half.active
+{
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s ease;
+}
+.second_half .second_half_title
+{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.register__input textarea
+{
+    border: none;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    padding: 10px ;
+    outline: none;
+    margin: 5px 0;
+    border-radius:5px ;
+    height:80px;
+    resize: none;
+}
+.register__input textarea:focus
+{
+    box-shadow:0px 0px 10px rgba(143, 238, 19, 0.438);
+    
+}
+.file__input
+{
+    width:100%;
+    height: 40px;
+    padding:0 10px;
+    margin: 10px 0;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+.register__btn
+{
+    margin: 7px;
+    width: 90%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.register__btn .prev__btn
+{
+    background-color: rgb(6, 77, 6);
+    padding: 8px 2rem;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.4s ease;
+}
+.prev__btn:hover
+{
+    transform: scale(1.05);
+
+}
+.register__btn button
+{
+    padding: 8px 2rem;
+    background-color: rgb(6, 70, 6);
+    outline: none;
+    border: none;
+    color: #fff;
+    text-transform: capitalize;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+.register__btn button:hover
+{
+    transform: scale(1.05);
+}
+.login__container
+{
+    font-size: 12px;
+    text-align: center;
+    margin-left: -20px;
+}
+
+.right__container
+{
+    flex: 0.6;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.right__container img
+{
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery App | Adi creation</title>
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/category.css' %}">
+    <link rel="stylesheet" href="{% static 'css/image-model.css' %}">
+</head>
+<body>
+        <nav class="navbar">
+            <div class="logo_container">
+                <div class="logo_img">
+                    <img src="{% static 'icons/icons/icon-1.png'%}" alt="">
+                </div>
+                <div class="logo_name">
+                  <h2><a href="{% url 'home'%}">Gallery App</a></h2>  
+                </div>
+            </div>
+            <div class="menu__container">
+                <ul class="menu__items">
+                    <li class="menu__item active"><a href="{% url 'home' %}">Home</a></li>
+                    {% if request.user.is_active %}
+                        <li class="menu__item"><a href="{% url 'user_panal' %}">UserPanal</a></li>
+                        <li class="menu__item "><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li class="menu__item"><a href="{% url 'login'%}">Login</a></li>
+                        <li class="menu__item"><a href="{% url 'register' %}">Register</a></li>
+                    {% endif %}
+                      <li class="menu__item"><a href="{% url 'Categories' %}">Categories</a></li>
+                    <li class="menu__item"><a href="{% url 'authors' %}">Author's</a></li>
+                    <li class="menu__item"><a href="{% url 'Contact' %}">ContactUS</a></li>
+                </ul>
+            </div>
+        </nav>
+    <section class="category__section">
+        <h1 class="category-heading">ALL Related Category Image Images</h1>
+        <p class="category_name">{{cate_name}}</p>
+    <div class="all__images">
+            {% if images %}
+            {% for image in images %}
+            <div class="image__block">
+                    <img class="img" src="{{image.img.url}}" data-id="{{image.id}}" alt="">
+                    <div class="info__block">
+                        <div class="download_btn info_btn">
+                            <a href="{{image.img.url}}" download="true"><img src="{% static 'icons/icons/cloud-computing.png' %}" alt=""><span>Download</span> </a>
+                        </div>
+                        <div class="like_btn info_btn">
+                            <button class="image__model_like" data-id="{{image.id}}"><img src="{% static 'icons/icons/like.png'%}" alt="">
+                                <span>
+                               {% if likes %}
+                               {% for like in likes %}
+                               {% if like.id == image.id %}
+                                   <span class="like__count">{{like.like}}</span>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                                Like</span>
+                            </button>
+                        </div>
+                        <div class="view_btn info_btn">
+                            <button class="view_img_btn" data-id="{{image.id}}"> <img src="{% static 'icons/icons/eye.png'%}" alt=""> <span>View</span></button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% else %}
+            <div class="data__not__found">Data Not Found!!!!! Sorry for inconvience </div>
+            {% endif %}
+    </div>
+    </section>
+
+    <section class="models__main__section">
+
+    </section>
+
+
+       <footer class="footer__section">
+        <div class="upper__container">
+            <div class="footer_upper_block">
+                <img class="footer_logo" src="{% static 'icons/icons/icon-1.png'%}" alt="">
+                <h2 class="footer_logo_name"> <a href="{% url 'home' %}">Gallery App</a></h2>
+                <p class="footer__para">We Provide the best natural images with best quality.
+                    we give the Experience of nature in our site. All The profit 
+                    we earn through this we donate is nature , forest developement.
+                </p>
+            </div>
+            <div class="footer_upper_block">
+                <h2>Important Link</h2>
+                <ul>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/feedback.png'%}" alt=""> <a href="">FeedBack</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/telephone.png'%}" alt=""> <a href="{% url 'Contact' %}">Contact Us</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/coding.png'%}" alt=""> <a href="">Developer</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/system.png'%}" alt=""> <a href="">Privacy Policy</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/customer-service-agent.png'%}" alt=""> <a href="">Services</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/connect.png'%}" alt=""> <a href="">Connect For Collaboration</a></li>
+                </ul>
+            </div>
+            <div class="footer_upper_block">
+                <h2>Top Links</h2>
+                <ul>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/github.png'%}" alt=""> <a href="">Github</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/file.png'%}" alt=""> <a href="">Django</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/letter-a.png'%}" alt=""> <a href="">Authors</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/feedback.png'%}" alt=""> <a href="">Google</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="footer__lower__container">
+            <div class="left_lower_block">
+                <p>@2021 All Rights are reserved to Adi Creation</p>
+            </div>
+            <div class="right_lower_block">
+                <ul>
+                    <li><a href="#"> <img class="share__icon" src="{% static 'icons/share_icon/instagram.png'%}"  title="instagram" alt=""></a> </li>
+                    <li><a href="#"> <img class="share__icon" src="{% static 'icons/share_icon/facebook.png'%}" title="Facebook"  alt=""></a> </li>
+                    <li><a href="#"> <img class="share__icon" src="{% static 'icons/share_icon/youtube.png'%}" title="youtube"  alt=""></a> </li>
+                    <li><a href="#"> <img class="share__icon" src="{% static 'icons/share_icon/linkedin.png'%}" title="linkedin"  alt=""></a> </li>
+                </ul>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     <script>
+        const view_btns = document.querySelectorAll('.view_img_btn');
+        const all_images = document.querySelectorAll('.img');
+
+        const sendComment = (img_id,content) =>
+        {
+                $.ajax({
+                    method:'POST',
+                    url:'/comment/',
+                    data:{
+                        'img_id':img_id,
+                        'content':content
+                    },
+                    success:(response) =>
+                    {
+                        let comment_section = document.querySelector('.all__comments_container');
+                        let para = `<div class="comment__block">
+                                    <h4>${response.name}</h4>
+                                    <p>${response.content}</p>
+                                    </div>`;
+                        comment_section.innerHTML += para ;
+                    }
+                })
+
+        }
+
+
+        const get_images = (val) =>
+        {
+            let id = val;
+                $.ajax({
+                    method:'GET',
+                    url:'/get-image/',
+                    data:{
+                        'id':id
+                    },
+                    success:(Response) =>
+                    {
+                        $('.models__main__section').html(Response.data);
+
+                        $('.model_main_img').dblclick(() =>
+                        {
+                            document.querySelector('.model__image__block').classList.toggle('remove');
+                            document.querySelector('.model_main_img').classList.toggle('remove');
+                        })
+                        $('.close__btn').click(() =>
+                        {
+                            $('.model__section').fadeOut(500);
+                            $('.models__main__section').append('');
+
+                        })
+                        $('.like_modelBtn').click(() =>
+                        {
+                            console.log('like click');
+                            $.ajax({
+                                url:'/like/',
+                                method:'POST',
+                                data:{
+                                    get_id:id
+                                },
+                                success:(res) =>
+                                {
+                                    console.log(res.data);
+                                    if(res.like === 'no')
+                                    {
+                                        alert(res.data);
+                                    }
+                                    else
+                                    {
+                                        alert(res.data);
+                                        $('.like_count').html(res.like) ;
+                                    }
+                                }
+                            })
+                        })
+                        const send_comment_btn = document.querySelector('.send_comment_btn');
+                        const comment__content = document.querySelector('.comment__content') ;
+                        const image__id = document.querySelector('.image__id');
+
+                        send_comment_btn.addEventListener('click',() =>
+                        {
+                            console.log('click');
+                            if(comment__content.value.length === 0)
+                            {
+                                console.log('not Good');
+                            }
+                            else
+                            {
+                                console.log('good');
+                                sendComment(image__id.value,comment__content.value);
+                            }
+                        })
+                    }
+
+                })
+
+        }
+
+        view_btns.forEach((v_b) =>{
+            v_b.addEventListener('click',(e) =>
+            {
+                console.log('hello world');
+                let id = v_b.getAttribute('data-id');
+                get_images(id);
+
+            })
+        })
+
+        all_images.forEach((a_i) =>{
+            a_i.addEventListener('click',(e) =>
+            {
+                console.log('hello world2');
+                let id = a_i.getAttribute('data-id');
+                get_images(id);
+
+            })
+        })
+
+       let image__model_like = document.querySelectorAll('.image__model_like');
+
+       image__model_like.forEach((i_model,index) =>
+       {
+           i_model.addEventListener('click',() =>
+           {
+               console.log('image models');
+               let id = i_model.getAttribute('data-id');
+               $.ajax({
+                    url:'/like/',
+                    method:'POST',
+                    data:{
+                        get_id:id
+                    },
+                    success:(res) =>
+                    {
+                        console.log(res.data);
+                        if(res.like === 'no')
+                        {
+                            alert(res.data);
+                        }
+                        else
+                        {
+                            alert(res.data);
+                            $('.like_count').html(res.like) ;
+                        }
+                    }
+                })
+
+           })
+
+       })
+
+
+
+    </script>
+</body>
+</html>

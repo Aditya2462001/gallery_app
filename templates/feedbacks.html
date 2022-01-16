@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery App | Adi creation</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/feedbacks.css' %}">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+</head>
+<body>
+        <nav class="navbar">
+            <div class="logo_container">
+                <div class="logo_img">
+                    <img src="{% static 'icons/icons/icon-1.png'%}" alt="">
+                </div>
+                <div class="logo_name">
+                  <h2><a href="{% url 'home'%}">Gallery App</a></h2>  
+                </div>
+            </div>
+            <div class="menu__container">
+                <ul class="menu__items">
+                    <li class="menu__item active"><a href="{% url 'home' %}">Home</a></li>
+                    {% if request.user.is_active %}
+                        <li class="menu__item "><a href="{% url 'user_panal' %}">UserPanal</a></li>
+                        <li class="menu__item "><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li class="menu__item"><a href="{% url 'login'%}">Login</a></li>
+                        <li class="menu__item"><a href="{% url 'register' %}">Register</a></li>
+                    {% endif %}
+                     <li class="menu__item"><a href="{% url 'Categories' %}">Categories</a></li>
+                    <li class="menu__item"><a href="{% url 'authors' %}">Author's</a></li>
+                    <li class="menu__item"><a href="{% url 'Contact' %}">ContactUS</a></li>
+                </ul>
+            </div>
+            <div class="search__container">
+                    <form action="" method="GET" class="search__block">
+                        <input type="search" name="search" placeholder="Search Here" title="Search" required />
+                        <button type="submit" title="search button">Search</button>
+                    </form>
+            </div>
+        </nav>
+    <section class="contact__section">
+        <div class="heading__container">
+            <h2 class="section__heading">Feedbacks</h2>
+            <p>what user say about us.</p>
+        </div>
+        <div class="contact__container">
+            <div class="all-feedbacks">
+                {% for feedback in feedbacks %}
+                    <div class="feedback-block">
+                        <div class="feedback-user-info">
+                            <div class="feed-user-img">
+                                {% if feedback.author.img %}
+                                    <img src="{{feedback.author.img.url}}" >
+                                {% else %}
+                                    <img src="{% static 'userpanal_icon/skills.png'%}" >
+                                {% endif %}
+                            </div>
+                            <div class="feed-user-block">
+                             <p><strong>{{feedback.author.fname}} {{feedback.author.lname}}</strong> </p>
+                             <p>{{feedback.author.profession}} </p>
+                            </div>
+                        </div>
+                        <div class="feedback-content">
+                          <p>{{feedback.desc}}</p> 
+                        </div>
+                    </div>
+                {% endfor %}
+              </div>
+        </div>
+    </section>
+
+
+       <footer class="footer__section">
+        <div class="upper__container">
+            <div class="footer_upper_block">
+                <img class="footer_logo" src="{% static 'icons/icons/icon-1.png'%}" alt="">
+                <h2 class="footer_logo_name"> <a href="{% url 'home' %}">Gallery App</a></h2>
+                <p class="footer__para">We Provide the best natural images with best quality.
+                    we give the Experience of nature in our site. All The profit 
+                    we earn through this we donate is nature , forest developement.
+                </p>
+            </div>
+            <div class="footer_upper_block">
+                <h2>Important Link</h2>
+                <ul>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/feedback.png'%}" alt=""> <a href="">FeedBack</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/telephone.png'%}" alt=""> <a href="{% url 'Contact' %}">Contact Us</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/coding.png'%}" alt=""> <a href="">Developer</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/system.png'%}" alt=""> <a href="">Privacy Policy</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/customer-service-agent.png'%}" alt=""> <a href="">Services</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/connect.png'%}" alt=""> <a href="">Connect For Collaboration</a></li>
+                </ul>
+            </div>
+            <div class="footer_upper_block">
+                <h2>Top Links</h2>
+                <ul>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/github.png'%}" alt=""> <a href="">Github</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/file.png'%}" alt=""> <a href="">Django</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/letter-a.png'%}" alt=""> <a href="">Authors</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/feedback.png'%}" alt=""> <a href="">Google</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="footer__lower__container">
+            <div class="left_lower_block">
+                <p>@2021 All Rights are reserved to Adi Creation</p>
+            </div>
+            <div class="right_lower_block">
+                <ul>
+                    <li><a href="#"> <img class="share__icon" src="{% static 'icons/share_icon/instagram.png'%}"  title="instagram" alt=""></a> </li>
+                    <li><a href="#"> <img class="share__icon" src="{% static 'icons/share_icon/facebook.png'%}" title="Facebook"  alt=""></a> </li>
+                    <li><a href="#"> <img class="share__icon" src="{% static 'icons/share_icon/youtube.png'%}" title="youtube"  alt=""></a> </li>
+                    <li><a href="#"> <img class="share__icon" src="{% static 'icons/share_icon/linkedin.png'%}" title="linkedin"  alt=""></a> </li>
+                </ul>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $('.all-feedbacks').slick({
+            centerMode: true,
+            centerPadding: '60px',
+            slidesToShow: 3,
+            responsive: [
+              {
+                breakpoint: 768,
+                settings: {
+                  arrows: false,
+                  centerMode: true,
+                  centerPadding: '40px',
+                  slidesToShow: 3
+                }
+              },
+              {
+                breakpoint: 480,
+                settings: {
+                  arrows: false,
+                  centerMode: true,
+                  centerPadding: '40px',
+                  slidesToShow: 1
+                }
+              }
+            ]
+          });
+    </script>
+</body>
+</html>

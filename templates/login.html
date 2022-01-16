@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Gallery App</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body
+        {
+            background-image: url("{% static 'images/5169546.jpg'%}");
+            background-size: cover;
+        }
+    </style>
+
+</head>
+<body>
+    <section class="login__section section">
+        <div class="left__section">
+            <div class="main__logo">
+                    <h2><a href="{% url 'home' %}">Gallery App</a></h2>
+            </div>
+            <div class="login_form_heading">
+                <h2>Welcome Back!</h2>
+                <p class="login__title">Please Login in to your account</p>
+            </div>
+            <form action="" method="POST" class="login__form">
+             {% csrf_token %}
+                <div class="login__input">
+                    <p>Username</p>
+                    <input type="text" name="username" placeholder="UserName" required />
+                </div>
+                <div class="login__input">
+                    <p>Password</p>
+                    <div class="password__input">
+                        <input type="password" name="password" class="password__inp" placeholder="Password" required/>
+                        <span  id="show_password" class="password_view"><i class="fas fa-eye eye__icon"></i></span>
+                    </div>
+                </div>
+                <div class="forget__password">
+                    <a href="#">forget password ?</a>
+                </div>
+                <div class="login__btn">
+                    <button type="submit">Login</button>
+                    <a href="{% url 'register' %}">Create Account</a>
+                </div>
+            </form>
+        </div>
+        <div class="right__section">
+            <img src="{% static 'images/5423403.jpg' %}" alt="">
+        </div>
+    </section>
+
+    <script src="{% static '' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        let message_data = '';
+
+        {% if messages %}
+            {% for message in messages %}
+                 swal({
+                    text: "{{message}}",
+                    icon: "{{message.tags}}",
+                 });
+            {% endfor %}
+        {% endif %}
+
+        const password_view = document.querySelector('#show_password');
+        const password_inp = document.querySelector('.password__inp');
+
+        password_view.addEventListener('click',() =>{
+            if(password_inp.type == 'password')
+            {
+                password_inp.type = 'text';
+                password_view.innerHTML = `<i class="fas fa-eye-slash"></i>`;
+            }
+            else
+            {
+                password_inp.type = 'password';
+                password_view.innerHTML = `<i class="fas fa-eye"></i>`;
+            }
+        })
+
+
+    </script>
+    
+</body>
+</html>

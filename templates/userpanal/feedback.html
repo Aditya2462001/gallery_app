@@ -1,0 +1,38 @@
+{% extends 'userpanal/userPanal.html' %}
+{% load static %}
+
+{% block title %} FeedBack | Gallery App {% endblock title %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/feedback.css'%}">
+{% endblock css %}
+
+{% block body %}
+<section class="feedback__section">
+    <h2 class="feedback__heading">Give Valuable Feedback</h2>
+    <p class="feedback__subtitle">Give Your Valuable feedback to us for betterment of our site</p>
+    <form action="" method="POST" class="feedback__form">
+        {% csrf_token %}
+        <div class="feedback__input">
+            <label>Rate Us</label>
+            <select name="rating" id="">
+                <option value="">Rate Us</option>
+                <option value="1">1 Star</option>
+                <option value="2">2 Star</option>
+                <option value="3">3 Star</option>
+                <option value="4">4 Star</option>
+                <option value="5">5 Star</option>
+            </select>
+        </div>
+        <div class="feedback__input">
+            <label>Feedback</label>
+            <textarea name="feedback" id="feedback" cols="30" rows="10"></textarea>
+        </div>
+        <div class="feedback__send__btn">
+            <button type="submit" class="submit__btn">Send FeedBack </button>
+        </div>
+    </form>
+</section>
+{% endblock body %}
+
+{% block js %}{% endblock js %}

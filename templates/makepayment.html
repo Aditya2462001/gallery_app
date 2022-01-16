@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+</head>
+<body>
+</body>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+      console.log('{{ total_amount }}');
+    var options = {
+       
+      // Enter the Key ID generated from the Dashboard
+      key: "{{ razor_payment_id }}",
+      amount: "{{ total_amount }}",
+      currency: "{{ currency }}",
+      name: "Gallery App",
+      order_id: "{{ order_id }}",
+      callback_url: "{{ callback_url }}",
+      prefill: {
+        "name": "{{name}}",
+        "contact": "+91{{number}}",
+        "email": "{{email}}"
+      },
+      notify: {
+        "sms": true,
+        "email": true
+      },
+
+    };
+     
+    // initialise razorpay with the options.
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+</script>
+</html>

@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery App | About Us</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+</head>
+<body>
+        <nav class="navbar">
+            <div class="logo_container">
+                <div class="logo_img">
+                    <img src="{% static 'icons/icons/icon-1.png'%}" alt="">
+                </div>
+                <div class="logo_name">
+                  <h2><a href="{% url 'home'%}">Gallery App</a></h2>  
+                </div>
+            </div>
+            <div class="menu__container">
+                <ul class="menu__items">
+                    <li class="menu__item active"><a href="{% url 'home' %}">Home</a></li>
+                    {% if request.user.is_active %}
+                        <li class="menu__item "><a href="{% url 'user_panal' %}">UserPanal</a></li>
+                        <li class="menu__item "><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li class="menu__item"><a href="{% url 'login'%}">Login</a></li>
+                        <li class="menu__item"><a href="{% url 'register' %}">Register</a></li>
+                    {% endif %}
+                     <li class="menu__item"><a href="{% url 'Categories' %}">Categories</a></li>
+                    <li class="menu__item"><a href="{% url 'authors' %}">Author's</a></li>
+                    <li class="menu__item"><a href="{% url 'Contact' %}">ContactUS</a></li>
+                </ul>
+            </div>
+            <div class="search__container">
+                    <form action="" method="GET" class="search__block">
+                        <input type="search" name="search" placeholder="Search Here" title="Search" required />
+                        <button type="submit" title="search button">Search</button>
+                    </form>
+            </div>
+        </nav>
+    <section class="contact__section">
+        <div class="heading__container">
+            <h2 class="section__heading">About Us</h2>
+            <p>What here in site.</p>
+        </div>
+        <div class="contact__container">
+            <p>
+                I Provide the best natural images with best quality.
+                    we give the Experience of nature in our site. All The profit 
+                    we earn through this we donate is nature , forest developement.
+                <br>
+
+                Here Any one can login and upload there surrounding natural images. here only we accept the natural photos if you upload the 
+                another images if it find it will be deleted accordingly because it only the natural images gallery.
+
+            </p>
+            <h2>Why You Donate</h2>
+            <p>
+                If you want our nature become more attractive and how it was in past. so you can. we provide this money to the
+                nature base NGOs where they can use this money efficiently in bulding the nature good,better,and best.
+                <br>
+                If you are nature Lover and live the pollution free world so you can apporach us. we not use you money for us 
+                if for nature.
+            </p>
+            <div class="donate-btn-section">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="input_block">
+                        <label>Name*</label>
+                        <input type="text" name="name" value="{{request.user.first_name}} {{request.user.last_name}}" placeholder="Enter Name" required/>
+                    </div>
+                    <div class="input_block">
+                        <label>Email*</label>
+                        <input type="email" name="email" value="{{request.user.email}}" placeholder="Enter Name" required/>
+                    </div>
+                    <div class="input_block">
+                        <label>Number*</label>
+                        <input type="tel" name="number" placeholder="Enter Mobile Number" required/>
+                    </div>
+                    <div class="input_block">
+                        <label>Amount*</label>
+                        <input type="number" name="amount" min="100" placeholder="Enter Amount" required/>
+                    </div>
+                    <div class="submit_button">
+                        <button type="submit">Donate Us for Nature</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="container">
+            <h3>How Donate Us</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Donate Id</td>
+                        <td>Name</td>
+                        <td>Amount</td>
+                        <td>Payment Status</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if donates %}
+                        {% for donate in donates %}
+                        <tr>
+                            <td>{{donate.razorpay_orderId}}</td>
+                            <td>{{donate.name}}</td>
+                            <td>Rs. {{donate.amount}}</td>
+                            <td>{{donate.payment_status}}</td>
+                        </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+       <footer class="footer__section">
+        <div class="upper__container">
+            <div class="footer_upper_block">
+                <img class="footer_logo" src="{% static 'icons/icons/icon-1.png'%}" alt="">
+                <h2 class="footer_logo_name"> <a href="{% url 'home' %}">Gallery App</a></h2>
+                <p class="footer__para">We Provide the best natural images with best quality.
+                    we give the Experience of nature in our site. All The profit 
+                    we earn through this we donate is nature , forest developement.
+                </p>
+            </div>
+            <div class="footer_upper_block">
+                <h2>Important Link</h2>
+                <ul>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/feedback.png'%}" alt=""> <a href="/feedbacks">FeedBacks</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/telephone.png'%}" alt=""> <a href="{% url 'Contact' %}">Contact Us</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/coding.png'%}" alt=""> <a href="">Developer</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/system.png'%}" alt=""> <a href="">Privacy Policy</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/customer-service-agent.png'%}" alt=""> <a href="">Services</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/connect.png'%}" alt=""> <a href="">Connect For Collaboration</a></li>
+                </ul>
+            </div>
+            <div class="footer_upper_block">
+                <h2>Top Links</h2>
+                <ul>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/github.png'%}" alt=""> <a href="">Github</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/file.png'%}" alt=""> <a href="">Django</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/letter-a.png'%}" alt=""> <a href="">Authors</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/feedback.png'%}" alt=""> <a href="">Google</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="footer__lower__container">
+            <div class="left_lower_block">
+                <p>@2021 All Rights are reserved to Adi Creation</p>
+            </div>
+            <div class="right_lower_block">
+                <ul>
+                    <li><a href="#"> <img class="share__icon" src="{% static 'icons/share_icon/instagram.png'%}"  title="instagram" alt=""></a> </li>
+                    <li><a href="#"> <img class="share__icon" src="{% static 'icons/share_icon/facebook.png'%}" title="Facebook"  alt=""></a> </li>
+                    <li><a href="#"> <img class="share__icon" src="{% static 'icons/share_icon/youtube.png'%}" title="youtube"  alt=""></a> </li>
+                    <li><a href="#"> <img class="share__icon" src="{% static 'icons/share_icon/linkedin.png'%}" title="linkedin"  alt=""></a> </li>
+                </ul>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

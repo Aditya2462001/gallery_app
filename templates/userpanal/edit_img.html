@@ -1,0 +1,87 @@
+{% extends 'userpanal/userPanal.html' %}
+{% load static %}
+{% block title %}Upload Image | Gallery App{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/img-upload.css'%}">
+{% endblock css %}
+
+{% block body %}
+{% if image %}
+<section class="uploadImg__section">
+    <h2 class="uploadImg__heading">Edit Image </h2>
+    <form action="" method="POST" class="uploadImg__form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="left__block">
+            <div class="img__prev__block">
+
+                <img src="{{image.img.url}}" id="imgPrev" alt="{{image.title}}" width="400px" height="400px">
+            </div>
+            <div class="img__block">
+                <input type="file" name="image" id="imageFile" accept="image/*"/>
+                <p class="add-img-btn">+</p>
+                <p class="file-name">No File Uploaded At!</p>
+            </div>
+        </div>
+        <div class="right__block">
+            <div class="title__block">
+                <label>Title : </label>
+                <input type="text" name="title" value="{{image.title}}" autofocus required/>
+            </div>
+            <div class="desc__block">
+                <label>Desc <span>( Optional)</span></label>
+                <textarea name="desc">
+                {% if image.desc %}
+                     {{image.desc}}
+                {% endif %}
+                </textarea>
+            </div>
+            <div class="category__block">
+                <label>Category</label>
+                <select name="category" id="" required>
+                    <option value="">Select Category</option>
+                            <option value="{{category.id}}" selected>{{category.name|title}}</option>
+                    {% if categories %}
+                        {% for category in categories|dictsort:'name' %}
+                            <option value="{{category.id}}">{{category.name|title}}</option>
+                        {% endfor %}
+                    {% endif %}
+                </select>
+            </div>
+            <div class="btn__section">
+                <button type="submit">Upload Image</button>
+            </div>
+        </div>
+    </form>
+</section>
+{% endif %}
+{% endblock body %}
+
+
+{% block js %}
+<script>
+    const imageFile = document.getElementById('imageFile');
+    const imgPrev = document.getElementById('imgPrev');
+    const upload_img_btn = document.querySelector('.add-img-btn');
+    const file_name = document.querySelector('.file-name');
+
+    upload_img_btn.addEventListener('click',() =>
+    {
+        imageFile.click();
+    })
+
+    imageFile.addEventListener("change",(e) =>
+    {
+        imgPrev.src = URL.createObjectURL(e.target.files[0]);
+        file_name.textContent = e.target.files[0].name ;
+
+    });
+
+    const select_cate = document.querySelector('#category');
+
+    select_cate.addEventListener("select",() =>
+    {
+        console.log(this.value);
+    })
+</script>
+{% endblock js %}

@@ -1,0 +1,25 @@
+<div class="images__container">
+    {% for image in images %}
+           <div class="image__block">
+               <img class="image" data-id="{{image.id}}" src="{{image.img.url}}" alt="">
+
+               <div class="actions__btn">
+                 <a href="/delete-img/{{image.id}}" title="delete">
+                   <img class="action_btn" src="{% static 'icons/icons/trash.png'%}" alt="">
+                 </a>
+
+                 <a href="/edit-image/{{image.id}}" title="Edit">
+                 <img class="action_btn" src="{% static 'icons/icons/image-editing.png'%}" alt="">
+                 </a>  
+
+                 <button title="View" class="view_img_btn" data-id="{{image.id}}">
+                   <img class="action_btn" src="{% static 'icons/icons/eye.png'%}" alt="">
+                   </button>  
+
+                 <a href="{{image.img.url}}" download="true" title="Download">
+                   <img class="action_btn" src="{% static 'icons/icons/cloud-computing.png'%}" alt="">
+                 </a>  
+               </div>
+           </div>
+     {% endfor %}
+   </div>

@@ -1,0 +1,103 @@
+.navbar
+{
+    background-color: rgba(2, 43, 11, 0.918);
+}
+.menu__item a {
+    color: #fff;
+}
+.contact__section
+{
+    min-height: 80vh;
+    padding: 1rem 5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.heading__container
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0px;
+    margin-bottom: 2rem;
+}
+.heading__container h2
+{
+    font-size: 3rem;
+}
+.contact__container
+{
+    width: 80%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+.feedback-block
+{
+    height: 300px !important;
+    overflow: hidden;
+    margin: 10px;
+    padding: 10px !important;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.3);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s ease;
+
+}
+.feedback-block:hover
+{
+    transform: scale(1.05);
+    box-shadow: 1px 1px 10px rgba(0,0,0,.3);
+}
+.feedback-user-info
+{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.feedback-user-info .feed-user-img
+{
+    height: 60px;
+    width: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.feed-user-img img
+{
+    width: 100%;
+    height: 100%;
+}
+.feed-user-block 
+{
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.feedback-content
+{
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    height: 150px;
+    overflow-y: auto;
+    text-align: center;
+}
+.feedback-content::-webkit-scrollbar
+{
+    width: 10px;
+    border-radius: 20px;
+    background-color: rgba(0,0,0,.3);
+}
+.feedback-content::-webkit-scrollbar-thumb
+{
+    background-color: green;
+    border-radius: 10px;
+}

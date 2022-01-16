@@ -1,0 +1,89 @@
+.navbar
+{
+    background-color: rgba(2, 43, 11, 0.918);
+}
+.menu__item a {
+    color: #fff;
+}
+.author__section
+{
+    min-height: 100vh;
+}
+.author__heading_block
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+.author__heading_block .author__heading
+{
+    text-transform: uppercase;
+    font-size: 30px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.author__heading::before
+{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 30px;
+    height: 3px;
+    background-color: #000;
+    transform: translate(-50%,-50%);
+}
+.author__heading_block .author__subheading
+{
+    color: rgb(190, 190, 190);
+    font-size: 10px;
+}
+
+.all__authors
+{
+    width: 100%;
+    display: flex;
+    padding: 0 1rem;
+}
+.author__content
+{
+    width: 300px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: .5rem 1rem;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    transition: all 0.5s ease;
+}
+.author__content:hover
+{
+    transform: scale(1.05);
+}
+.author__image
+{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 20px;
+}
+.author__img
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.author_info__block
+{
+    padding: 10px;
+    text-align: center;
+    color: #000;
+}

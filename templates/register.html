@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Gallery App</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <style>
+    body
+    {
+        background-image: url("{% static 'images/5330558.jpg' %}");
+        background-size: cover;
+    }
+    </style>
+</head>
+<body>
+    <section class="register__section">
+        <div class="left__container">
+            <div class="main__logo">
+                <h2><a href="{% url 'home' %}">Gallery App</a></h2>
+            </div>
+            <div class="register__title_block">
+                <h2>Welcome Here!</h2>
+                <p>Please register yourself in our site</p>
+            </div>
+            <form action="" method="POST" class="register__form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="first_half">
+                <div class="name__input">
+                    <div class="register__input">
+                        <label for="fname">fname</label>
+                        <input type="text" name="fname" placeholder="First Name"  value="{{fname}}" required />
+                    </div>
+                    <div class="register__input">
+                        <label for="lname">lname</label>
+                        <input type="text" name="lname" placeholder="Last Name" value="{{lname}}" required />
+                    </div>
+                </div>
+                <div class="register__input">
+                    <label for="email">email</label>
+                    <input type="email" name="email" placeholder="Email" value="{{email}}" required />
+                </div>
+                <div class="register__input">
+                    <label for="number">Mobile Number</label>
+                    <input type="number" name="number" placeholder="Mobile Number" value="{{number}}" required />
+                </div>
+                <div class="register__input">
+                    <label for="city">City</label>
+                    <input type="text" name="city" placeholder="City" value="{{city}}" required />
+                </div>
+                <div class="register__input">
+                    <label for="profession">profession</label>
+                    <input type="text" name="profession" placeholder="profession" value="{{profession}}" required />
+                </div>
+                <div class="first_half_btn" id="first_half_btn">
+                    <p>Next</p>
+                </div>
+            </div>
+            <div class="second_half">
+                <div class="second_half_title">
+                   <p>Next Part</p> 
+                </div>
+                <div class="register__input">
+                    <label for="desc">Describe your self</label>
+                    <textarea name="desc" id="desc" value="{{desc}}" placeholder="Describe you self"></textarea>
+                </div>
+                <div class="auth__input">
+                    <div class="register__input">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" placeholder="username" value="{{username}}" required />
+                    </div>
+                    <div class="register__input">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" placeholder="Password" required />
+                    </div>
+                    <div class="register__input">
+                        <label for="Vpassword">Verify Password</label>
+                        <input type="password" name="Vpassword" placeholder="Reentered Password" required />
+                    </div>
+                </div>
+                <div class=" file__input">
+                    <input type="file" accept="image/*" class="image__files" name="image" id="image" >
+                </div>
+                <div class="register__btn">
+                    <p class='prev__btn'>Prev</p>
+                    <button type="submit">Registration</button>
+                </div>
+            </div>
+            </form>
+            <p class="login__container">Don't Have an account ? <a href="{% url 'login' %}">Login</a></p>
+
+        </div>
+        <div class="right__container">
+            <img src="{% static 'images/tawz_u63b_210816.jpg' %}" alt="">
+        </div>
+    </section>
+
+    <script src="{% static '' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+    let message_data = '';
+    let message_tag = '';
+        {% if messages %}
+            {% for message in messages %}
+                 swal({
+                    text: "{{message}}",
+                    icon: "{{message.tag}}",
+                    button: "Try again",
+                });
+            {% endfor %}
+        {% endif %}
+    </script>
+    
+    <script>
+        const next_btn = document.querySelector('#first_half_btn');
+        const first_container = document.querySelector('.first_half');
+        const prev_btn = document.querySelector('.prev__btn');
+        const next__container = document.querySelector('.second_half');
+
+        next_btn.addEventListener('click',() =>
+        {
+            next__container.classList.add('active');
+            first_container.classList.add('active');
+
+        })
+        prev_btn.addEventListener('click',() =>
+        {
+            next__container.classList.remove('active');
+            first_container.classList.remove('active');
+        })
+    </script>
+    
+</body>
+</html>

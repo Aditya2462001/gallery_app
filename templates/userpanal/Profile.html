@@ -1,0 +1,52 @@
+{% extends 'userpanal/userPanal.html' %}
+{% load static %}
+
+{% block title %}Profile | Gallery App{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/profile.css'%}">
+{% endblock css %}
+
+
+{% block body %}
+<section class="profile__section">
+    <h2 class="profile__heading">About Me</h2>
+    <div class="profile___container">
+        {% if author %}
+            <div class="left__container">
+                <div class="avtar__block">
+                {% if author.img %}
+                    <img src="{{author.img.url}}" alt="" width="100px" height="100px">
+                    {% else %}
+                    <img src="" alt="">
+                {% endif %}
+                </div>
+            </div>
+            <div class="right__container">
+                <h2>Information</h2>
+                <div class="personal__info__block">
+                    <div class="full__name">
+                        <p>Fname : <strong>{{author.fname}}</strong></p>
+                        <p>Lname : <strong>{{author.lname}}</strong></p>
+                    </div>
+                    <p class="email__block">Email : <strong>{{author.email}}</strong></p>
+                    <p class="number__block">Mobile Number : <strong>{{author.number}}</strong></p>
+                    <p class="city__block">City : <strong>{{author.city}}</strong></p>
+                    <p class="profession__block"> Profession :<strong>{{author.profession}}</strong></p>
+                    <p class="desc__block">Details Desc : <strong>{{author.desc}}</strong></p>
+                    <div class="blocks">
+                        <p class="user__block">Username : <strong>{{author.user.username}}</strong></p>  
+                        <p class="total_img__block">Total Images uploaded : <strong>{{images}}</strong></p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+</section>
+{% endblock body %}
+
+{% block js %}
+
+{% endblock js %}
+
