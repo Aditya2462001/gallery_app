@@ -55,3 +55,109 @@
 {
     transform: scale(1.05);
 }
+
+.donate-btn-section
+{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.donate-btn-section h2
+{
+    margin: 20px 0;
+    text-transform: uppercase;
+}
+.donate-btn-section form
+{
+    background-color: rgba(111, 255, 111, 0.712);
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    padding-top: 1rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+}
+.donate-btn-section .input_block
+{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+.input_block input
+{
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin: 5px 0;
+    padding: 0 10px ;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+}
+.input_block label
+{
+    padding-left: 5px;
+}
+.submit_button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit_button button{
+    padding: 10px 4rem;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 10px;
+    color: #fff;
+    background-color: rgba(2, 43, 11, 0.918);
+    border: none;
+    outline: none;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+    transition: all 0.5s ease;
+}
+
+/* ============================ donator container  ============================= */
+.donators-container
+{
+    display: flex;
+    flex-direction: column;
+}
+.donators-container h3
+{
+    text-align: center;
+    margin: 20px 0;
+    text-transform: uppercase;
+}
+.donators-container table
+{
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+.donators-container table td,.donators-container table th 
+{
+border: 1px solid #ddd;
+padding: 8px;
+}
+  
+.donators-container table tr:nth-child(even)
+{
+    background-color: #f2f2f2;
+}
+  
+.donators-container table tr:hover 
+{
+    background-color: #ddd;
+}
+  
+.donators-container thead th 
+{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }

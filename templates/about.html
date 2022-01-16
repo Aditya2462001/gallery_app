@@ -48,25 +48,22 @@
             <p>What here in site.</p>
         </div>
         <div class="contact__container">
-            <p>
-                I Provide the best natural images with best quality.
+            <div class="about-content">
+                <p> I Provide the best natural images with best quality.
                     we give the Experience of nature in our site. All The profit 
-                    we earn through this we donate is nature , forest developement.
-                <br>
-
-                Here Any one can login and upload there surrounding natural images. here only we accept the natural photos if you upload the 
-                another images if it find it will be deleted accordingly because it only the natural images gallery.
-
-            </p>
-            <h2>Why You Donate</h2>
-            <p>
-                If you want our nature become more attractive and how it was in past. so you can. we provide this money to the
-                nature base NGOs where they can use this money efficiently in bulding the nature good,better,and best.
-                <br>
-                If you are nature Lover and live the pollution free world so you can apporach us. we not use you money for us 
-                if for nature.
-            </p>
+                    we earn through this we donate is nature , forest developement.Here Any one can login and upload there 
+                    surrounding natural images. here only we accept the natural photos if you upload the 
+                    another images if it find it will be deleted accordingly because it only the natural images gallery.</p><br>
+                <h2>Why You Donate</h2>
+                <p>
+                    If you want our nature become more attractive and how it was in past. so you can. we provide this money to the
+                    nature base NGOs where they can use this money efficiently in bulding the nature good,better,and best.
+                    If you are nature Lover and live the pollution free world so you can apporach us. we not use you money for us 
+                    if for nature.
+                </p>
+            </div>
             <div class="donate-btn-section">
+                <h2>Donate For Nature</h2>
                 <form action="" method="POST">
                     {% csrf_token %}
                     <div class="input_block">
@@ -92,15 +89,15 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container donators-container">
             <h3>How Donate Us</h3>
             <table>
                 <thead>
                     <tr>
-                        <td>Donate Id</td>
-                        <td>Name</td>
-                        <td>Amount</td>
-                        <td>Payment Status</td>
+                        <th>Donate Id</th>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Payment Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -120,7 +117,7 @@
     </section>
 
 
-       <footer class="footer__section">
+    <footer class="footer__section">
         <div class="upper__container">
             <div class="footer_upper_block">
                 <img class="footer_logo" src="{% static 'icons/icons/icon-1.png'%}" alt="">
@@ -135,7 +132,7 @@
                 <ul>
                     <li><img class="footer_list_img" src="{% static 'icons/footer-icons/feedback.png'%}" alt=""> <a href="/feedbacks">FeedBacks</a></li>
                     <li><img class="footer_list_img" src="{% static 'icons/footer-icons/telephone.png'%}" alt=""> <a href="{% url 'Contact' %}">Contact Us</a></li>
-                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/coding.png'%}" alt=""> <a href="">Developer</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/coding.png'%}" alt=""> <a href="/about">About US</a></li>
                     <li><img class="footer_list_img" src="{% static 'icons/footer-icons/system.png'%}" alt=""> <a href="">Privacy Policy</a></li>
                     <li><img class="footer_list_img" src="{% static 'icons/footer-icons/customer-service-agent.png'%}" alt=""> <a href="">Services</a></li>
                     <li><img class="footer_list_img" src="{% static 'icons/footer-icons/connect.png'%}" alt=""> <a href="">Connect For Collaboration</a></li>
@@ -144,10 +141,10 @@
             <div class="footer_upper_block">
                 <h2>Top Links</h2>
                 <ul>
-                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/github.png'%}" alt=""> <a href="">Github</a></li>
-                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/file.png'%}" alt=""> <a href="">Django</a></li>
-                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/letter-a.png'%}" alt=""> <a href="">Authors</a></li>
-                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/feedback.png'%}" alt=""> <a href="">Google</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/github.png'%}" alt=""> <a href="/about">Github</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/file.png'%}" alt=""> <a href="https://www.djangoproject.com/">Django</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/letter-a.png'%}" alt=""> <a href="/authors">Authors</a></li>
+                    <li><img class="footer_list_img" src="{% static 'icons/footer-icons/donation.png'%}" alt=""> <a href="/about">Donate Us</a></li>
                 </ul>
 
             </div>
